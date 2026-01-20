@@ -1,0 +1,11 @@
+keras==3.13.1
+matplotlib==3.10.8
+pandas==2.3.3
+plotly==6.5.2
+scikit-learn==1.8.0
+seaborn==0.13.2
+statsmodels==0.14.6
+streamlit==1.53.0
+streamlit-option-menu==0.4.0
+tensorflow==2.20.0
+prophet==1.2.1
