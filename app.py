@@ -193,7 +193,7 @@ if selected=="Home":
     st.title("HeatCast: Heatwave Risk Analysis and Forecasting")
     st.markdown("""
 Welcome to **HeatCast**, part of the **Gen Data program**.  
-This app empowers communities and policymakers in Northeast Nigeria by analyzing heatwave risks, forecasting future conditions, and providing actionable recommendations.
+This app empowers communities and policymakers by analyzing heatwave risks, forecasting future conditions, and providing actionable recommendations.
 
 ### Contributors
 - Gen Data POD members
@@ -673,4 +673,5 @@ elif selected=="Climate Insights":
         st.markdown("""
                 ### Welcome to HeatCast App.
                 **Upload a weather data in CSV format to start analysis and forecast. Check the sidebar for instruction!**
+
                     """)
