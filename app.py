@@ -16,7 +16,7 @@ from datetime import timedelta
 import calendar
 
 
-# Deep learning & Prophet
+# Deep learning and Prophet
 try:
     from tensorflow.keras.models import Sequential
     from tensorflow.keras.layers import LSTM, Dense
@@ -192,15 +192,21 @@ selected=option_menu(
 if selected=="Home":
     st.title("HeatCast: Heatwave Risk Analysis and Forecasting")
     st.markdown("""
-Welcome to **HeatCast**, part of the **Gen Data program**.  
-This app empowers communities and policymakers by analyzing heatwave risks, forecasting future conditions, and providing actionable recommendations.
+Welcome to **HeatCast**, part of the **Generation Data program by [YOULEAD International](https://www.linkedin.com/company/youleadintl/)**.  
+This app empowers communities and policymakers in Northwest Nigeria, and everywhere else, by analyzing heatwave risks, forecasting future conditions and providing actionable recommendations.
 
 ### Contributors
-- Gen Data POD members
-- Climate scientists, data engineers, and policy experts
+The app was developed by the Climate POD 2 of the Gen Data Cohort 1. Members include:
+- [Teye Richard Gamah](https://www.linkedin.com/in/gamah/)
+- [Winner Amaefule](https://www.linkedin.com/in/winneramaefule/) 
+- [Kehinde Yusuf](https://www.linkedin.com/in/thekehindeyusuf/)
+- [Zubaidah Muhammad](https://www.linkedin.com/in/zubaidah-muhammad-673a11303/)
+- [Ballah P. Kollie](https://www.linkedin.com/in/ballah-p-kollie-b54228149/)
+                
+These contributors combined their climate science, data engineering and policy making expertise to make this app possible
 
-Use the **Climate Insights** page to upload your weather data and explore analysis, forecasts, and risk dashboards.
-""")
+Use the **Climate Insights** page to upload your weather data and explore analysis, forecasts and risk dashboards.
+""", unsafe_allow_html=True)
 
 # -----------------------------
 # Climate Insights Page
@@ -208,21 +214,21 @@ Use the **Climate Insights** page to upload your weather data and explore analys
 elif selected=="Climate Insights":
     st.sidebar.title("Upload and Settings")
     st.sidebar.markdown(""" Upload a CSV with columns such as:
-    1. `name`: Station Name
-    2. `datetime`: Date/Time
-    3. `tempmax`: Maximum Temperature (°C)
-    4. `tempmin`: Minimum Temperature (°C)
-    5. `temp`: Average Temperature (°C)
-    6. `humidity`: Relative Humidity (%)
-    7. `precip`: Precipitation (mm)
-    8. `windspeed`: Wind Speed (km/h)
-    9. `windgust`: Wind Gust (km/h)
-    10. `solarradiation`: Solar Radiation
-    11. `uvindex`: Utlta Violet Index
-    12. `cloudcover`: Cloud Cover
-    13. `solarenergy`: Solar Energy
-    14. `conditions`: Weather Condition """) # name, datetime, tempmax, tempmin, temp, humidity, precip, windspeed, windgust")
-    uploaded=st.sidebar.file_uploader("Upload CSV",type=["csv"])
+    1. `name` - string: Weather Station Name  
+    2. `datetime` - numeric: Date/Time - datatime
+    3. `tempmax` - numeric: Maximum Temperature (°C) 
+    4. `tempmin` - numeric: Minimum Temperature (°C) 
+    5. `temp` - numeric: Average Temperature (°C) 
+    6. `humidity` - numeric: Relative Humidity (%) 
+    7. `precip` - numeric: Precipitation (mm) 
+    8. `windspeed` - numeric: Wind Speed (km/h) 
+    9. `windgust` - numeric: Wind Gust (km/h) 
+    10. `solarradiation` - numeric: Solar Radiation 
+    11. `uvindex` - numeric: Utlta Violet Index 
+    12. `cloudcover` - numeric: Cloud Cover
+    13. `solarenergy` - numeric: Solar Energy
+    14. `conditions` - string: Weather Condition  """) # name, datetime, tempmax, tempmin, temp, humidity, precip, windspeed, windgust")
+    uploaded=st.sidebar.file_uploader("Upload Weather CSV",type=["csv"])
     if uploaded:
         df=pd.read_csv(uploaded)
         df=df[USE_COLS]
@@ -332,6 +338,11 @@ elif selected=="Climate Insights":
                         y=target,
                         color='heat_alert',
                         title=f"Heatwave Alerts – {COLUMN_LABELS.get(target,target)}",
+                        labels={
+                            "datetime": "Years",    
+                            target: "Temperature (°C)",
+                            'heat_alert': 'Heat Alert'  
+                        },
                         color_discrete_map={
                             "Normal": "green",
                             "Heat Advisory": "orange",
@@ -672,6 +683,5 @@ elif selected=="Climate Insights":
     else:
         st.markdown("""
                 ### Welcome to HeatCast App.
-                **Upload a weather data in CSV format to start analysis and forecast. Check the sidebar for instruction!**
-
+                **Upload a weather data in CSV format to start the analysis and forecast. Check the sidebar for instruction!**
                     """)
