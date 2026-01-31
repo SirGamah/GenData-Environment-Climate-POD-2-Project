@@ -192,8 +192,8 @@ selected=option_menu(
 if selected=="Home":
     st.title("HeatCast: Heatwave Risk Analysis and Forecasting")
     st.markdown("""
-Welcome to **HeatCast**, part of the **Generation Data program by [YOULEAD International](https://www.linkedin.com/company/youleadintl/)**.  
-This app empowers communities and policymakers in Northwest Nigeria, and everywhere else, by analyzing heatwave risks, forecasting future conditions and providing actionable recommendations.
+Welcome to **HeatCast**, a project made by students from the **Generation Data** program by **[YOULEAD International](https://www.linkedin.com/company/youleadintl/)**.  
+This app empowers communities, researchers and policymakers in Northwest Nigeria, and everywhere else, by analyzing heatwave risks, forecasting future conditions and providing actionable recommendations.
 
 ### Contributors
 The app was developed by the Climate POD 2 of the Gen Data Cohort 1. Members include:
@@ -684,4 +684,5 @@ elif selected=="Climate Insights":
         st.markdown("""
                 ### Welcome to HeatCast App.
                 **Upload a weather data in CSV format to start the analysis and forecast. Check the sidebar for instruction!**
+
                     """)
